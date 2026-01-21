@@ -11,10 +11,18 @@ const pool = new Pool({
   database: process.env.DB_DATABASE,
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
+  max: 100, 
+  idleTimeoutMillis: 30000, 
+  connectionTimeoutMillis: 2000, 
 });
 
 pool.on('connect', () => {
-  console.log('Conectado');
+  console.log('Cliente conectado al Pool (Total: ' + pool.totalCount + ')');
+});
+
+pool.on('error', (err) => {
+  console.error('Error inesperado en el cliente inactivo', err);
+  process.exit(-1);
 });
 
 export default pool;
