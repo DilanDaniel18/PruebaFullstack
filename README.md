@@ -46,7 +46,7 @@ El proyecto está **Dockerizado** para facilitar su revisión sin necesidad de i
 
 1.  **Clonar el repositorio:**
     ```bash
-    git clone <TU_URL_DEL_REPO>
+    git clone (https://github.com/DilanDaniel18/PruebaFullstack.git)
     cd PRUEBAFULLSTACK
     ```
 
@@ -56,7 +56,7 @@ El proyecto está **Dockerizado** para facilitar su revisión sin necesidad de i
     docker-compose up --build
     ```
 
-3.  **¡Listo!**
+3.  **Sistema iniciado:**
     El sistema aprovisionará automáticamente la base de datos, insertará datos de prueba (`init.sql`) e iniciará los servicios.
 
 ---
