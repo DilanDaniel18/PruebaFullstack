@@ -1,0 +1,18 @@
+body {
+    background-color: #f0f2f5;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.badge-stock {
+    font-size: 0.9em;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+}
