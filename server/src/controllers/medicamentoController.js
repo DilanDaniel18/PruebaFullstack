@@ -1,5 +1,10 @@
 import * as model from '../models/medicamentoModel.js';
 
+// Controlador para manejar las solicitudes relacionadas con Medicamentos
+
+/* Se exportan las funciones del controlador como métodos estáticos 
+de una clase, esto para evitar realizar múltiples imports en el
+archivo de rutas y mantener un código más facil de mantener */
 export default class MedicamentoController {
   
   static async getMedicamentosOrderById(req, res) {

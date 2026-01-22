@@ -5,6 +5,7 @@ dotenv.config();
 
 const { Pool } = pg;
 
+// Configuración de Pool de conexiones con 100 conexiones máximas
 const pool = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,

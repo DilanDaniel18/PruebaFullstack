@@ -2,6 +2,7 @@ const API_BASE = 'http://localhost:3000/api/medicamentos';
 
 $(document).ready(() => {
 
+// Filtro por fecha de vencimiento
 $.fn.dataTable.ext.search.push(
     function(settings, data, dataIndex) {
         const filtro = $('#filtro-vencimiento').val();
@@ -30,6 +31,7 @@ $('#filtro-vencimiento').on('change', function() {
     $('#miTabla').DataTable().draw();
 });
   
+// Función para cargar y renderizar la tabla de medicamentos
   function cargarTabla() {
     $.get(API_BASE, (data) => {
       
@@ -46,6 +48,8 @@ $('#filtro-vencimiento').on('change', function() {
     const seleccionActual = $select.val();
     
     $select.empty();
+
+    // Cargar categorías únicas en el filtro
     $select.append('<option value="">Todas las categorías</option>');
     
     categoriasUnicas.sort().forEach(cat => {
@@ -67,6 +71,7 @@ $('#filtro-vencimiento').on('change', function() {
             ? `<span class="badge bg-danger badge-stock"> ${med.cantidad}</span>`
             : `<span class="badge bg-success badge-stock">${med.cantidad}</span>`;
 
+        // Agregar fila a la tabla
         $tbody.append(`
           <tr>
             <td>${med.id}</td>
@@ -86,6 +91,7 @@ $('#filtro-vencimiento').on('change', function() {
         `);
       });
 
+      // Inicializar DataTable con opciones
       $('#miTabla').DataTable({
         language: { 
             url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
@@ -106,6 +112,7 @@ $('#filtro-vencimiento').on('change', function() {
   }).fail(() => alert('Error al conectar con el servidor'));
   }
 
+  // Función para resetear el formulario de medicamento
   function resetearForm() {
     $('#form-medicamento')[0].reset();
     $('#edit-id').val('');
@@ -115,6 +122,7 @@ $('#filtro-vencimiento').on('change', function() {
     $('#btn-cancelar').addClass('d-none');
   }
 
+  // Manejo del envío del formulario para crear o actualizar un medicamento
   $('#form-medicamento').on('submit', function(e) {
     e.preventDefault();
     
@@ -135,6 +143,7 @@ $('#filtro-vencimiento').on('change', function() {
     const textoOriginal = $btn.html();
     $btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Procesando...');
 
+    // Realizar la solicitud AJAX
     $.ajax({
       url: url,
       method: metodo,
@@ -155,6 +164,7 @@ $('#filtro-vencimiento').on('change', function() {
     });
   });
 
+  // Manejo del botón de editar
   $(document).on('click', '.btn-edit', function() {
     const id = $(this).data('id');
     
@@ -177,6 +187,7 @@ $('#filtro-vencimiento').on('change', function() {
     });
   });
 
+  // Manejo del botón de eliminar
   $(document).on('click', '.btn-delete', function() {
     const id = $(this).data('id');
     if (confirm('¿Estás seguro de que deseas eliminar este medicamento?')) {

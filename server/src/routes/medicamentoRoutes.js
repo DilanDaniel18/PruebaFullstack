@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import MedicamentoController from '../controllers/medicamentoController.js';
 
+// Rutas de API para Medicamentos
 const router = Router();
 router.get('/', MedicamentoController.getMedicamentosOrderById);
 router.get('/orden/nombre', MedicamentoController.getMedicamentosOrderByName);
