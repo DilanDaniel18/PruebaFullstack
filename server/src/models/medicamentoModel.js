@@ -17,7 +17,7 @@ export const searchById = async (id) => {
 
 export const searchByName = async (termino) => {
   const query = 'SELECT * FROM medicamentos WHERE nombre ILIKE $1 ORDER BY nombre ASC';
-  const values = [`%${termino}%`]; 
+  const values = [`${termino}%`]; 
   
   const result = await pool.query(query, values);
   return result.rows;
