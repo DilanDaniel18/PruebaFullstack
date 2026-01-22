@@ -1,22 +1,13 @@
 import { Router } from 'express';
-import { 
-  getMedicamentosOrderById, 
-  getMedicamentosOrderByName,
-  getMedicamentoById, 
-  getMedicamentoByName,
-  createMedicamento, 
-  updateMedicamento, 
-  deleteMedicamento 
-} from '../controllers/medicamentoController.js';
+import MedicamentoController from '../controllers/medicamentoController.js';
 
 const router = Router();
-
-router.get('/', getMedicamentosOrderById);           
-router.get('/orden/nombre', getMedicamentosOrderByName);
-router.get('/buscar/:name', getMedicamentoByName);
-router.get('/:id', getMedicamentoById);
-router.put('/:id', updateMedicamento);
-router.delete('/:id', deleteMedicamento);
-router.post('/', createMedicamento);
+router.get('/', MedicamentoController.getMedicamentosOrderById);
+router.get('/orden/nombre', MedicamentoController.getMedicamentosOrderByName);
+router.get('/buscar/:name', MedicamentoController.getMedicamentoByName);
+router.get('/:id', MedicamentoController.getMedicamentoById);
+router.put('/:id', MedicamentoController.updateMedicamento);
+router.delete('/:id', MedicamentoController.deleteMedicamento);
+router.post('/', MedicamentoController.createMedicamento);
 
 export default router;
